@@ -1,12 +1,16 @@
-console.log("Hello from src/index.js!");
+const list = document.querySelector("#list-inline")
+console.log(list)
 
-const btn = document.querySelector("#click-me")
-console.log(btn)
+fetch("http://www.omdbapi.com/?s=harry potter&apikey=adf1f2d7")
+  .then(response => response.json())
+  .then((data) => {
+    data.Search.forEach((result) => {
+      console.log(result.Title)
+        const movie = `<li class="list-inline-item">
+    <img src="${result.Poster}" alt="">
+    <p>${result.Title}</p>
+    </li>`
+    list.insertAdjacentHTML("beforeend", movie)
+  })
+})
 
-btn.addEventListener("click", (event) => {
-  console.log("i was clicked")
-  // console.dir(event.currentTarget) this will display an object of all methods available from this event
-  event.currentTarget.innerText = "hold tight!";
-  event.currentTarget.setAttribute("disabled", "");
-
-});
