@@ -1,4 +1,4 @@
-const list = document.querySelector("#list-inline")
+const list = document.querySelector(".list-inline")
 console.log(list)
 
 fetch("http://www.omdbapi.com/?s=harry potter&apikey=adf1f2d7")
